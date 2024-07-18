@@ -1,16 +1,14 @@
 # Godot 4+ specific ignores
 .godot/
 
-InventoryItem.gd
 assets/
 config
 description
-enemy_animator_controler.gd
 hooks/
 icon.svg
 icon.svg.import
 info/
-inventory/
+./inventory/
 project.godot
 resources/
 scenes/
