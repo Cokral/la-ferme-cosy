@@ -11,9 +11,9 @@ class_name AnimatorControler
 var direction: String
 
 func damage():
-	animation_player.play(damage_animation)
+	animation_player.play(damage_animation + direction)
 	
-	var animation_length = animation_player.get_animation(damage_animation).length / animation_player.speed_scale
+	var animation_length = animation_player.get_animation(damage_animation + direction).length / animation_player.speed_scale
 	await get_tree().create_timer(animation_length).timeout
 
 	animation_player.play(idle_animation)

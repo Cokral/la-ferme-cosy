@@ -22,9 +22,6 @@ func enter():
 	idle_timer.start(idle_duration)
 	grass_areas = get_tree().get_nodes_in_group("GrassArea")
 
-
-
-
 func update(delta: float):
 	super.update(delta)
 	check_for_grass()
@@ -34,6 +31,10 @@ func check_for_grass():
 		if enemy.global_position.distance_to(grass.global_position) <= grass_detection_range:
 			transition_to("move_to_grass")
 			return
+			
+func physics_update(delta: float):
+	if enemy:
+		enemy.velocity = Vector2(0, 0)
 
 func _on_idle_timer_timeout():
 	transition_to("wander")
