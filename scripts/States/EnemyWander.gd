@@ -13,8 +13,9 @@ var grass_areas: Array
 func enter():
 	super.enter()
 	__randomize_wander()
-	grass_areas = get_tree().get_nodes_in_group("GrassArea")
+	#grass_areas = get_tree().get_nodes_in_group("GrassArea")
 	if enemy:
+		enemy.velocity = move_direction * move_speed
 		enemy.get_node("AnimatorControler").walk() 
 
 func __randomize_wander():
@@ -27,7 +28,7 @@ func update(delta: float):
 	else:
 		transition_to("idle")
 	
-	check_for_grass()
+	#check_for_grass()
 
 func physics_update(delta: float):
 	if enemy:

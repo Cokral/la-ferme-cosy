@@ -4,6 +4,7 @@ class_name Inventory
 @onready var inventory_slots = $GridContainer
 var holding_item = null
 var is_open = false
+var slot_equipped: Slot = null
 signal inventory_status(status: bool)
 signal equip(item: Item)
 
@@ -66,8 +67,14 @@ func slot_guid_input(event: InputEvent, slot: Slot):
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			if slot.item_inv:
 				if slot.item_inv.item.equipable:
+					# Un-equip previous item (in UI)
+					if slot_equipped:
+						slot_equipped = slot_equipped.unequip()
+					slot.equip()
+					slot_equipped = slot
 					print("Equipping item ", slot.item_inv.item.item_name)
 					equip.emit(slot.item_inv.item)
+					# Equip new item (in UI)
 
 func _input(event: InputEvent) -> void:
 	# Open / close inventory

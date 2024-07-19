@@ -18,6 +18,9 @@ func enter():
 	super.enter()
 	flee_direction = (enemy.global_position - target.global_position).normalized()
 	flee_timer.start(flee_duration)
+	enemy.velocity = flee_direction * flee_speed
+	if enemy:
+		enemy.get_node("AnimatorControler").walk() 
 
 func physics_update(delta: float):
 	enemy.velocity = flee_direction * flee_speed

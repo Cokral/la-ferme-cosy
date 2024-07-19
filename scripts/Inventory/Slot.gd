@@ -44,3 +44,13 @@ func remove_item_quantity(qty: int):
 	
 	if item_inv.slot_item_quantity < 0:
 		item_inv = null
+		
+# Equip	
+
+func equip(): 
+	if self.item_inv:
+		self.item_inv.select()
+	
+func unequip():
+	if self.item_inv:
+		self.item_inv.deselect()

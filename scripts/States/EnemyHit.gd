@@ -4,7 +4,7 @@ class_name EnemyHit
 signal HitStarted
 signal HitEnded
 
-@export var stun_time := 1.0
+@export var stun_time := 0.5
 
 var stun_timer: Timer
 

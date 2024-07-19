@@ -20,11 +20,11 @@ func enter():
 		enemy.velocity = Vector2.ZERO
 		enemy.get_node("AnimatorControler").idle()  # Play idle animation
 	idle_timer.start(idle_duration)
-	grass_areas = get_tree().get_nodes_in_group("GrassArea")
+	#grass_areas = get_tree().get_nodes_in_group("GrassArea")
 
 func update(delta: float):
 	super.update(delta)
-	check_for_grass()
+	#check_for_grass()
 
 func check_for_grass():
 	for grass in grass_areas:

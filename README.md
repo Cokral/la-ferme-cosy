@@ -14,13 +14,14 @@ I will try to continuously provide screenshots of the current status to make it 
 
 **GAMEPLAY**
 - [X] Initial setup (character movement + use a weapon + able to break and loot from trees and rocks + simple inventory + simple crafting + initial setup for cow AI)
-- [ ] Setup collision with water tiles
+- [X] Setup collision with water tiles
 - [ ] Player
 	- [ ] Ability to hold an item
-	- [ ] Clarity on selected item in inventory
+	- [X] Clarity on selected item in inventory
 	- [ ] Ability to plant (depend on Plant)
 - [ ] Cow
-	- [ ] Fix direction of animation when moving
+	- [ ] Fix when cow is hit (doesn't slide forever)
+	- [X] Fix direction of animation when moving
 	- [ ] Setup right animations depending on state
 	- [ ] Refine current states constants
 	- [ ] Add other states and animations 
