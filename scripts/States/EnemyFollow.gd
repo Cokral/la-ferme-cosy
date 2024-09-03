@@ -1,23 +1,32 @@
 extends State
-class_name EnemyFollow
+class_name FollowState
 
-@export var move_speed := 100.0
-@export var min_follow_distance := 25.0
-@export var max_follow_distance := 50.0
-@export var transition_distance := 75.0
+@export var follow_speed := 25.0
+@export var min_distance := 50.0
+@export var max_distance := 150.0
 
 func enter():
-	if enemy:
-		enemy.get_node("AnimatorControler").walk() 
+	if enemy and enemy.has_node("AnimatorControler"):
+		enemy.get_node("AnimatorControler").walk()
 
 func physics_update(delta: float):
+	if not is_instance_valid(target):
+		transition_to("idle")
+		return
+		
+	if not target.is_holding_item("Carrot"):
+		transition_to("idle")
+		
 	var direction = target.global_position - enemy.global_position
-	
-	if direction.length() > min_follow_distance:
-		var new_velocity = direction.normalized() * move_speed
-		enemy.velocity = new_velocity
+	var distance = direction.length()
+
+	if distance > max_distance:
+		transition_to("idle")
+	elif distance > min_distance:
+		enemy.velocity = direction.normalized() * follow_speed
+		if enemy and enemy.has_node("AnimatorControler"):
+			enemy.get_node("AnimatorControler").update_animation(enemy.velocity)
 	else:
 		enemy.velocity = Vector2.ZERO
-		
-	if direction.length() > transition_distance:
-		transition_to("wander")
+		if enemy and enemy.has_node("AnimatorControler"):
+			enemy.get_node("AnimatorControler").idle()

@@ -98,3 +98,7 @@ func _on_ui_equip(item):
 		print("player holds " + item_held.item_name)
 		$ItemHeld.texture = item.item_texture
 		$ItemHeld.visible = true
+		
+func is_holding_item(item_name: String):
+	if item_held != null:
+		return item_name == item_held.item_name

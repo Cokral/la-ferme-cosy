@@ -27,7 +27,8 @@ I will try to continuously provide screenshots of the current status to make it 
 	- [ ] Add other states and animations 
 		- [ ] Follow Player (when player is holding food)
 		- [ ] Sleeping
-		- [ ] Follow Player when he is holding food
+		- [X] Follow Player when he is holding food
+    - [ ] Improve transition from different states to another
 - [ ] Grass / Plant
 	- [ ] Can grow
 	- [ ] Link with cow eating pattern
