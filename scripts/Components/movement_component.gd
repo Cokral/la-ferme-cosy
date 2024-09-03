@@ -10,18 +10,15 @@ var prev_direction: String
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if character:
-		
-		#if character.velocity.x > 0: # moving to the right
-			#direction = "Right"
-		#else:
-			#direction = "Left"
-#
-		#if direction != prev_direction:
-			#print("Change direction from", prev_direction, " to ", direction)
-			#prev_direction = direction
-			#animator.set_direction(direction)
-			##animator.walk(direction)
-		
+		if character.velocity.x > 0:
+			direction = "Right"
+		else:
+			direction = "Left"
+
+		if direction != prev_direction:
+			prev_direction = direction
+			character.get_node("AnimatorControler").update_direction()
+
 		character.move_and_slide()
 	
 	if status == "idle":

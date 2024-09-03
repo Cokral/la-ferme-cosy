@@ -8,47 +8,50 @@ class_name AnimatorControler
 @export var walk_animation: String = "Walk"
 @export var eat_animation: String = "Eat"
 @export var flee_animation: String = "Flee"
+@export var die_animation: String = "Die"
 
+var current_animation: String = ""
 var direction: String
 
 func damage():
-	update_direction()
-	animation_player.play(damage_animation + direction)
-	
-	var animation_length = animation_player.get_animation(damage_animation + direction).length / animation_player.speed_scale
-	await get_tree().create_timer(animation_length).timeout
-	
-	animation_player.play(idle_animation)
+	play_animation(damage_animation)
 
-func die() -> float:
-	update_direction()
-	animation_player.play("Die")
+func walk():
+	play_animation(walk_animation)
+
+func idle():
+	play_animation(idle_animation)
+
+func eat():
+	play_animation(eat_animation)
+
+func flee():
+	play_animation(flee_animation)
+	
+func die():
+	animation_player.play(die_animation)
 	var animation_length = animation_player.get_animation("Die").length / animation_player.speed_scale
 	return animation_length
 
-func walk():
+func play_animation(anim_name: String):
 	update_direction()
-	animation_player.play(walk_animation + direction)
+	var full_anim_name = anim_name + direction
+	if current_animation != full_anim_name:
+		animation_player.play(full_anim_name)
+		current_animation = full_anim_name
+		print("Playing animation: ", full_anim_name)
 
-func idle():
-	update_direction()
-	animation_player.play(idle_animation + direction)
+func update_animation(velocity: Vector2):
+	if velocity.length() > 0:
+		if current_animation.begins_with(idle_animation):
+			walk()
+	else:
+		if not current_animation.begins_with(idle_animation):
+			idle()
 
-func eat():
-	update_direction()
-	animation_player.play(eat_animation + direction)
-
-func flee():
-	update_direction()
-	animation_player.play(flee_animation + direction)
-	
 func update_direction():
 	if movement_controler:
 		direction = movement_controler.get_direction()
 	else:
 		direction = ""
-		
-	print(direction)
-
-func _on_health_component_death():
-	die()
+	print("Current direction: ", direction)

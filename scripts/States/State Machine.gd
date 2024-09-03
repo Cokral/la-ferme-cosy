@@ -5,6 +5,7 @@ class_name StateMachine
 
 var states: Dictionary = {}
 var current_state: State
+signal transitioned(state)
 
 
 func _ready():
@@ -28,10 +29,9 @@ func _physics_process(delta):
 		current_state.physics_update(delta)
 		
 func damage(attack: Attack):
-	on_child_transition(current_state, "flee")
+	on_child_transition(current_state, "hit")
 
 func on_child_transition(state: State, new_state_name: String):
-	print(state, new_state_name)
 	if state != current_state:
 		return
 		
@@ -44,3 +44,5 @@ func on_child_transition(state: State, new_state_name: String):
 		
 	new_state.enter()
 	current_state = new_state
+	
+	emit_signal("transitioned", new_state)  # Emit the signal with the new state
