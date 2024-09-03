@@ -18,7 +18,6 @@ func _ready():
 
 func enter():
 	super.enter()
-	print("Entering Hit State")
 	take_damage()
 	enemy.velocity = Vector2.ZERO
 	stun_timer.start(stun_time)
@@ -28,7 +27,6 @@ func enter():
 
 func exit():
 	super.exit()
-	print("Exiting Hit State")
 	stun_timer.stop()
 	HitEnded.emit()
 

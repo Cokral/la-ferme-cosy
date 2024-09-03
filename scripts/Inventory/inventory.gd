@@ -64,9 +64,11 @@ func slot_guid_input(event: InputEvent, slot: Slot):
 				holding_item = slot.item_inv
 				slot.pick_from_slot()
 				holding_item.global_position = get_global_mouse_position()
+				
+		# EQUIP AN ITEM
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			if slot.item_inv:
-				if slot.item_inv.item.equipable:
+				if slot.item_inv.item.equipable or slot.item_inv.item.holdable:
 					# Un-equip previous item (in UI)
 					if slot_equipped:
 						slot_equipped = slot_equipped.unequip()

@@ -39,7 +39,6 @@ func play_animation(anim_name: String):
 	if current_animation != full_anim_name:
 		animation_player.play(full_anim_name)
 		current_animation = full_anim_name
-		print("Playing animation: ", full_anim_name)
 
 func update_animation(velocity: Vector2):
 	if velocity.length() > 0:
@@ -54,4 +53,3 @@ func update_direction():
 		direction = movement_controler.get_direction()
 	else:
 		direction = ""
-	print("Current direction: ", direction)

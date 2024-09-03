@@ -22,6 +22,7 @@ var dir: String = "right"
 var attacking: bool = false
 var inventory_open: bool = false
 var item_equipped: Item = null
+var item_held: Item = null
 signal collected(item: Item)
 
 
@@ -86,5 +87,14 @@ func _on_ui_inventory_status(status):
 	inventory_open = status
 
 func _on_ui_equip(item):
-	item_equipped = item
-	print("player equiped " + item_equipped.item_name)
+	if item.equipable:
+		item_equipped = item
+		item_held = null
+		print("player equiped " + item_equipped.item_name)
+		$ItemHeld.visible = false
+	elif item.holdable:
+		item_held = item
+		item_equipped = null
+		print("player holds " + item_held.item_name)
+		$ItemHeld.texture = item.item_texture
+		$ItemHeld.visible = true
