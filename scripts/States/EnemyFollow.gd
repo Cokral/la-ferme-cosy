@@ -1,7 +1,7 @@
 extends State
 class_name FollowState
 
-@export var follow_speed := 25.0
+@export var follow_speed := 50.0
 @export var min_distance := 50.0
 @export var max_distance := 150.0
 

@@ -36,9 +36,9 @@ func die():
 func play_animation(anim_name: String):
 	update_direction()
 	var full_anim_name = anim_name + direction
-	if current_animation != full_anim_name:
-		animation_player.play(full_anim_name)
-		current_animation = full_anim_name
+	#if current_animation != full_anim_name:
+	animation_player.play(full_anim_name)
+	current_animation = full_anim_name
 
 func update_animation(velocity: Vector2):
 	if velocity.length() > 0:

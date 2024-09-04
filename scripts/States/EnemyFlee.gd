@@ -1,7 +1,7 @@
 extends State
 class_name CowFleeState
 
-@export var flee_speed := 150.0
+@export var flee_speed := 75.0
 @export var flee_duration := 3.0
 @export var hit: HitState
 

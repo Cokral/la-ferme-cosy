@@ -13,7 +13,6 @@ var grass_areas: Array
 func enter():
 	super.enter()
 	__randomize_wander()
-	#grass_areas = get_tree().get_nodes_in_group("GrassArea")
 	if enemy:
 		enemy.velocity = move_direction * move_speed
 		enemy.get_node("AnimatorControler").walk() 
@@ -27,8 +26,7 @@ func update(delta: float):
 		wander_time -= delta
 	else:
 		transition_to("idle")
-	
-	#check_for_grass()
+
 
 func physics_update(delta: float):
 	if enemy:
@@ -39,12 +37,6 @@ func check_for_grass():
 		if enemy.global_position.distance_to(grass.global_position) <= grass_detection_range:
 			transition_to("move_to_grass")
 			return
-
-# Remove the player following behavior
-# func check_player_distance():
-#     var direction = target.global_position - enemy.global_position
-#     if direction.length() < 40:
-#         transition_to("follow")
 
 func exit():
 	super.exit()

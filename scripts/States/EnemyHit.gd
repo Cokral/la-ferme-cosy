@@ -31,7 +31,8 @@ func exit():
 	HitEnded.emit()
 
 func physics_update(_delta: float):
-	enemy.velocity = Vector2.ZERO
+	pass
+	#enemy.velocity = Vector2.ZERO
 
 func _on_stun_timer_timeout():
 	transition_to("flee")

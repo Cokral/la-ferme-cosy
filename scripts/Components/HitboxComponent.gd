@@ -13,8 +13,8 @@ func damage(attack: Attack):
 	if health_component:
 		health_component.damage(attack)
 		
-	if movement_component:
-		movement_component.knockback(attack)
-		
 	if state_controler:
 		state_controler.damage(attack)
+		
+	if movement_component:
+		movement_component.knockback(attack)
