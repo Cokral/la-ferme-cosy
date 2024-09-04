@@ -8,7 +8,11 @@ Bear in mind that this is the first game I am making using the engine, so this s
 
 I will try to continuously provide screenshots of the current status to make it more interesting!
 
+- 2024-07-18
 ![Screenshot of the game](Screenshots/Screenshot%202024-07-18%20at%2021.27.58.png)
+
+- 2024-09-04
+![Screenshot of the game](Screenshots/Screenshot%202024-09-04%20at%2016.59.09.png)
 
 ---
 
@@ -25,7 +29,7 @@ I will try to continuously provide screenshots of the current status to make it 
 	- [X] Setup right animations depending on state
 	- [ ] Refine current states constants
 	- [ ] Add other states and animations 
-		- [ ] Follow Player (when player is holding food)
+		- [X] Follow Player (when player is holding food)
 		- [ ] Sleeping
 		- [X] Follow Player when he is holding food
     - [ ] Improve transition from different states to another
