@@ -68,15 +68,19 @@ func slot_guid_input(event: InputEvent, slot: Slot):
 		# EQUIP AN ITEM
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			if slot.item_inv:
-				if slot.item_inv.item.equipable or slot.item_inv.item.holdable:
+				if slot.item_inv.item.equipable or slot.item_inv.item.holdable or slot.item_inv.item.placeable:
 					# Un-equip previous item (in UI)
-					if slot_equipped:
+					var is_diff_item = slot != slot_equipped
+					if slot_equipped != null:
 						slot_equipped = slot_equipped.unequip()
-					slot.equip()
-					slot_equipped = slot
-					print("Equipping item ", slot.item_inv.item.item_name)
-					equip.emit(slot.item_inv.item)
-					# Equip new item (in UI)
+					if is_diff_item:
+						slot.equip()
+						slot_equipped = slot
+						print("Equipping item ", slot.item_inv.item.item_name)
+						equip.emit(slot.item_inv.item)
+						# Equip new item (in UI)
+					else:
+						equip.emit(null)
 
 func _input(event: InputEvent) -> void:
 	# Open / close inventory

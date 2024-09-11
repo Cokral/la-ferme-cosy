@@ -87,7 +87,11 @@ func _on_ui_inventory_status(status):
 	inventory_open = status
 
 func _on_ui_equip(item):
-	if item.equipable:
+	if item == null:
+		item_equipped = null
+		item_held = null
+		$ItemHeld.visible = false
+	elif item.equipable:
 		item_equipped = item
 		item_held = null
 		print("player equiped " + item_equipped.item_name)

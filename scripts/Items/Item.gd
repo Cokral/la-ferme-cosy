@@ -8,5 +8,6 @@ class_name Item
 @export var item_texture: Texture2D
 @export var equipable: bool = false
 @export var holdable: bool = false
+@export var placeable: bool = false
 @export var attack_damage := 0.0
 @export var knockback_force := 0.0
